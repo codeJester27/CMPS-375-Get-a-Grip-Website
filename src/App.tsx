@@ -13,7 +13,7 @@ function App() {
   const [messageToSend, setMessageToSend] = useState("");
 
   useEffect(() => {
-    socket.current = new WebSocket(`ws://${import.meta.env.VITE_WSS_URL}`);
+    socket.current = new WebSocket(`${import.meta.env.VITE_WSS_URL}`);
     socket.current.onopen = () => setWebSocketStatus("connected");
     socket.current.onerror = () => setWebSocketStatus("error");
     return () => {
