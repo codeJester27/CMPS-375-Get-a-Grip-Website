@@ -5,4 +5,5 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   plugins: [react()],
   envDir: "src/env",
+  base: "/CMPS-375-Get-a-Grip-Website/",
 });
