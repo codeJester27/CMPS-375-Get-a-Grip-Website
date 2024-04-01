@@ -1,0 +1,70 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+input[type="range"] {
+  appearance: none;
+  background: none;
+}
+
+@keyframes loading-ping-pong-1 {
+  from {
+    mask-position: 0 0, 0 0, 0 0;
+  }
+  50% {
+    mask-position: 9em 0, 0 0, 0 0;
+  }
+  to {
+    mask-position: 0 0, 0 0, 0 0;
+  }
+}
+
+@keyframes loading-ping-pong-2 {
+  from {
+    mask-position: 0 0, 0 0, 0 0;
+  }
+  50% {
+    mask-position: 0 0, 8em 0, 0 0;
+  }
+  to {
+    mask-position: 0 0, 0 0, 0 0;
+  }
+}
+
+@keyframes loading-ping-pong-3 {
+  from {
+    mask-position: 0 0, 0 0, 0 0;
+  }
+  50% {
+    mask-position: 0 0, 0 0, 8em 0;
+  }
+  to {
+    mask-position: 0 0, 0 0, 0 0;
+  }
+}
+
+.loading {
+  width: 10em;
+  height: 10em;
+  object-fit: contain;
+  mask: linear-gradient(to right, white 0%, white 10%, black 10%, black 100%)
+      luminance,
+    linear-gradient(to right, white 0%, white 20%, black 20%, black 100%)
+      luminance,
+    linear-gradient(to right, white 0%, white 20%, black 20%, black 100%)
+      luminance;
+  animation: loading-ping-pong-1 2.2s infinite ease-in-out,
+    loading-ping-pong-2 3.1s infinite ease-in-out,
+    loading-ping-pong-3 4.3s infinite ease-in-out;
+  animation-composition: accumulate, accumulate;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
