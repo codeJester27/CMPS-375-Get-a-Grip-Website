@@ -5,9 +5,11 @@ import { LoadingIndicator } from "./components";
 
 function App() {
   const socket = useRef<WebSocket | null>(null);
+  //@ts-ignore
   const [webSocketStatus, setWebSocketStatus] = useState<
     "connecting" | "connected" | "error"
   >("connecting");
+  //@ts-ignore
   const [messageToSend, setMessageToSend] = useState("");
 
   useEffect(() => {
