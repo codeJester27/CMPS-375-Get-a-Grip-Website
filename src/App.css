@@ -35,9 +35,6 @@ button:focus-visible {
 }
 
 .menu-container {
-  padding: 1rem;
-  border: 2px solid #888888;
-  border-radius: 8px;
   display: flex;
   flex-direction: column;
 }
@@ -83,10 +80,13 @@ button:focus-visible {
   }
 }
 
-.loading {
+.logo {
   width: 10em;
   height: 10em;
   object-fit: contain;
+}
+
+.bars {
   mask: linear-gradient(to right, white 0%, white 10%, black 10%, black 100%)
       luminance,
     linear-gradient(to right, white 0%, white 20%, black 20%, black 100%)
@@ -96,7 +96,21 @@ button:focus-visible {
   animation: loading-ping-pong-1 2.2s infinite ease-in-out,
     loading-ping-pong-2 3.1s infinite ease-in-out,
     loading-ping-pong-3 4.3s infinite ease-in-out;
-  animation-composition: accumulate, accumulate;
+  animation-composition: accumulate, accumulate, accumulate;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0turn);
+  }
+
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.spin {
+  animation: spin 1s forwards linear infinite;
 }
 
 h1,

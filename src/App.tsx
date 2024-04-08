@@ -1,6 +1,6 @@
 import "./App.css";
-import { WebSocketContext, useWebSocketContext } from "./components";
-import { StartMenu } from "./menus";
+import { Loading, WebSocketContext, useWebSocketContext } from "./components";
+import { ErrorMenu, StartMenu } from "./menus";
 
 function App() {
   return (
@@ -11,8 +11,18 @@ function App() {
 }
 
 function Menus() {
-  const { serverAddress } = useWebSocketContext();
-  return serverAddress ? null : <StartMenu />;
+  const { serverAddress, status } = useWebSocketContext();
+  return serverAddress ? (
+    status === "connecting" ? (
+      <Loading />
+    ) : status === "error" ? (
+      <ErrorMenu />
+    ) : (
+      status
+    )
+  ) : (
+    <StartMenu />
+  );
 }
 
 export default App;

@@ -9,7 +9,8 @@ export default function StartMenu() {
 
   return (
     <div className="menu-container">
-      <Logo />
+      <Logo className="bars" />
+      <h2>Get a Grip</h2>
       <div className="divider" />
       <input
         value={inputAddress}
