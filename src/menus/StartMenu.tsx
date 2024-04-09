@@ -15,10 +15,12 @@ export default function StartMenu() {
       <input
         value={inputAddress}
         onChange={(e) => setInputAddress(e.target.value)}
+        type="text"
+        placeholder="Server Address"
       />
       <button
         className="mt"
-        type="button"
+        type="submit"
         onClick={() => setServerAddress(inputAddress)}
       >
         Connect

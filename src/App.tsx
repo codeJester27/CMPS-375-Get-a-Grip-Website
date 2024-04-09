@@ -1,6 +1,6 @@
 import "./App.css";
 import { Loading, WebSocketContext, useWebSocketContext } from "./components";
-import { ErrorMenu, StartMenu } from "./menus";
+import { ControlMenu, ErrorMenu, StartMenu } from "./menus";
 
 function App() {
   return (
@@ -16,9 +16,11 @@ function Menus() {
     status === "connecting" ? (
       <Loading />
     ) : status === "error" ? (
-      <ErrorMenu />
+      <ErrorMenu message="Connection Failed" />
+    ) : status === "disconnected" ? (
+      <ErrorMenu message="Disconnected" />
     ) : (
-      status
+      <ControlMenu />
     )
   ) : (
     <StartMenu />

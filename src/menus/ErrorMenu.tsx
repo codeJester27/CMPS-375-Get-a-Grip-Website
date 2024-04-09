@@ -1,12 +1,12 @@
 import { LogoWarn, useWebSocketContext } from "../components";
 
-export default function ErrorMenu() {
+export default function ErrorMenu({ message = "Error" }: { message?: string }) {
   const { setServerAddress } = useWebSocketContext();
 
   return (
     <div>
       <LogoWarn />
-      <h4>Connection Error</h4>
+      <h4>{message}</h4>
       <button className="mt" type="button" onClick={() => setServerAddress("")}>
         Go Back
       </button>

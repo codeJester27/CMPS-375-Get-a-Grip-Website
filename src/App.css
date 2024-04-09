@@ -6,7 +6,12 @@
 }
 
 input[type="range"] {
-  appearance: none;
+  font-size: inherit;
+}
+
+input[type="text"] {
+  border: 1px solid #888888;
+  border-radius: 3px;
   background: none;
 }
 
@@ -97,6 +102,42 @@ button:focus-visible {
     loading-ping-pong-2 3.1s infinite ease-in-out,
     loading-ping-pong-3 4.3s infinite ease-in-out;
   animation-composition: accumulate, accumulate, accumulate;
+}
+
+.hand-control {
+  position: relative;
+  width: 40em;
+  height: 40em;
+  /* background: repeating-linear-gradient(
+      to bottom,
+      white,
+      white 0.05em,
+      transparent 0.05em,
+      transparent 0.95em,
+      white 0.95em,
+      white 1em
+    ),
+    repeating-linear-gradient(
+      to right,
+      white 0,
+      white 0.05em,
+      transparent 0.05em,
+      transparent 0.95em,
+      white 0.95em,
+      white 1em
+    ); */
+}
+
+.hand-control > * {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hand-control-outline {
+  position: absolute;
+  inset: 0;
+  margin: 0 auto;
 }
 
 @keyframes spin {
