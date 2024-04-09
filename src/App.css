@@ -138,6 +138,7 @@ button:focus-visible {
   position: absolute;
   inset: 0;
   margin: 0 auto;
+  pointer-events: none;
 }
 
 @keyframes spin {
