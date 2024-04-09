@@ -1,30 +1,29 @@
-import { useEffect, useRef, useState } from "react";
-import WebSocket from "isomorphic-ws";
 import "./App.css";
-import { LoadingIndicator } from "./components";
+import { Loading, WebSocketContext, useWebSocketContext } from "./components";
+import { ControlMenu, ErrorMenu, StartMenu } from "./menus";
 
 function App() {
-  const socket = useRef<WebSocket | null>(null);
-  //@ts-ignore
-  const [webSocketStatus, setWebSocketStatus] = useState<
-    "connecting" | "connected" | "error"
-  >("connecting");
-  //@ts-ignore
-  const [messageToSend, setMessageToSend] = useState("");
-
-  useEffect(() => {
-    socket.current = new WebSocket(`${import.meta.env.VITE_WSS_URL}`);
-    socket.current.onopen = () => setWebSocketStatus("connected");
-    socket.current.onerror = () => setWebSocketStatus("error");
-    return () => {
-      socket.current?.close();
-    };
-  }, []);
-
   return (
-    <div>
-      <LoadingIndicator />
-    </div>
+    <WebSocketContext>
+      <Menus />
+    </WebSocketContext>
+  );
+}
+
+function Menus() {
+  const { serverAddress, status } = useWebSocketContext();
+  return serverAddress ? (
+    status === "connecting" ? (
+      <Loading />
+    ) : status === "error" ? (
+      <ErrorMenu message="Connection Failed" />
+    ) : status === "disconnected" ? (
+      <ErrorMenu message="Disconnected" />
+    ) : (
+      <ControlMenu />
+    )
+  ) : (
+    <StartMenu />
   );
 }
 
