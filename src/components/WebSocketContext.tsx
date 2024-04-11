@@ -26,6 +26,7 @@ export function WebSocketContext({ children }: React.PropsWithChildren) {
       socket.current = new WebSocket(serverAddress);
       socket.current.onopen = () => setWebSocketStatus("connected");
       socket.current.onerror = () => setWebSocketStatus("error");
+      socket.current.onclose = () => setWebSocketStatus("disconnected");
     }
     return () => {
       setWebSocketStatus("disconnected");
