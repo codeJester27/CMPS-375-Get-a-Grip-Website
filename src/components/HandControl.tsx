@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useWebSocketContext } from ".";
 import handOutlineImg from "/hand_outline_by_jared_age_5.svg";
 
-const SEND_COOLDOWN_MS = 200;
+const SEND_COOLDOWN_MS = 50;
 
 export default function HandControl() {
   return (
